@@ -1,20 +1,37 @@
-import { useState } from 'react'
 import './App.css'
-import GoogleLoginButton from './GoogleLoginButton'
+import type React from 'react'
+import { AuthProvider } from './context/AuthContext'
+import { useAuth } from './hooks/useAuth'
+import GoogleLoginButton from './components/GoogleLoginButton'
+import LogoutButton from './components/LogoutButton'
 
-function App() {
-  const [count, setCount] = useState(0)
+const App: React.FC = () => {
+  return (
+    <AuthProvider>
+      <div className="App">
+        <header className="App-header">
+          <h1>Politeia | πολιτεία</h1>
+          <AuthContext />
+        </header>
+      </div>
+    </AuthProvider>
+  )
+}
+
+const AuthContext: React.FC = () => {
+  const { user } = useAuth()
 
   return (
-    <>
-      <h1>Welcome to Politeia</h1>
-      <GoogleLoginButton />
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
-    </>
+    <div>
+      {user ? (
+        <>
+          <h2>Welcome, {user.name}!</h2>
+          <LogoutButton />
+        </>
+      ) : (
+        <GoogleLoginButton />
+      )}
+    </div>
   )
 }
 
