@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
-import type React from 'react'
-import { createContext, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
+import Cookies from 'js-cookie'
 
 interface AuthUser {
   email: string
@@ -15,6 +15,8 @@ interface AuthContextType {
   logout: () => void
 }
 
+const API_URL = import.meta.env.VITE_API_URL
+
 export const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({
@@ -22,8 +24,31 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [user, setUser] = useState<AuthUser | null>(null)
 
-  const login = (user: AuthUser) => setUser(user)
-  const logout = () => setUser(null)
+  useEffect(() => {
+    const token = Cookies.get('auth_token')
+    if (token) {
+      fetch(`${API_URL}/auth/verify`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        },
+        credentials: 'include'
+      })
+        .then((response) => response.json())
+        .then((data) => (data.user ? setUser(data.user) : null))
+        .catch((error) => console.error('Validation Failed:', error))
+    }
+  }, [])
+
+  const login = (user: AuthUser) => {
+    Cookies.set('auth_token', user.sub, { expires: 7 })
+    setUser(user)
+  }
+  const logout = () => {
+    Cookies.remove('auth_token')
+    setUser(null)
+  }
 
   return (
     <AuthContext.Provider value={{ user, login, logout }}>

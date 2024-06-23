@@ -1,9 +1,7 @@
 import './App.css'
-import type React from 'react'
+import React from 'react'
 import { AuthProvider } from './context/AuthContext'
-import { useAuth } from './hooks/useAuth'
-import GoogleLoginButton from './components/GoogleLoginButton'
-import LogoutButton from './components/LogoutButton'
+import AppRoutes from './routes/AppRoutes'
 
 const App: React.FC = () => {
   return (
@@ -11,27 +9,12 @@ const App: React.FC = () => {
       <div className="App">
         <header className="App-header">
           <h1>Politeia | πολιτεία</h1>
-          <AuthContext />
         </header>
+        <main>
+          <AppRoutes />
+        </main>
       </div>
     </AuthProvider>
-  )
-}
-
-const AuthContext: React.FC = () => {
-  const { user } = useAuth()
-
-  return (
-    <div>
-      {user ? (
-        <>
-          <h2>Welcome, {user.name}!</h2>
-          <LogoutButton />
-        </>
-      ) : (
-        <GoogleLoginButton />
-      )}
-    </div>
   )
 }
 

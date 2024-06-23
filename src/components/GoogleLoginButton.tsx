@@ -1,7 +1,6 @@
 import type { CredentialResponse } from '@react-oauth/google'
-import type React from 'react'
+import React from 'react'
 import { GoogleLogin } from '@react-oauth/google'
-import { jwtDecode } from 'jwt-decode'
 import { useAuth } from '../hooks/useAuth'
 
 const API_URL = import.meta.env.VITE_API_URL
@@ -11,8 +10,6 @@ const GoogleLoginButton: React.FC = () => {
 
   const handleLoginSuccess = async (response: CredentialResponse) => {
     const token = response.credential as string
-    const decoded = jwtDecode(token)
-    console.log('Login Success:', decoded)
 
     try {
       const backendResponse = await fetch(`${API_URL}/auth/google`, {
@@ -20,12 +17,12 @@ const GoogleLoginButton: React.FC = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ token })
+        body: JSON.stringify({ token }),
+        credentials: 'include'
       })
 
       if (backendResponse.ok) {
         const data = await backendResponse.json()
-        console.log('Backend Response:', data)
         login(data.user)
       } else {
         console.error('Backend Error:', backendResponse.statusText)
