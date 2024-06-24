@@ -1,27 +1,26 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import AdminDashboard from '../components/AdminDashboard'
 import AuthContext from '../components/AuthContext'
-import Layout from '../components/Layout'
+import DataPage from '../components/DataPage'
+import ExportPage from '../components/ExportPage'
 import ProtectedRoutes from '../components/ProtectedRoutes'
-import UserDetails from '../components/UserDetails'
-import UsersList from '../components/UsersList'
+import ReportsPage from '../components/ReportsPage'
+import ToolsPage from '../components/ToolsPage'
 
 const AppRoutes: React.FC = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<AuthContext />} />
-        <Route element={<ProtectedRoutes />}>
-          <Route element={<Layout />}>
-            <Route path="/admin" element={<AdminDashboard />} />
-            <Route path="/users" element={<UsersList />} />
-            <Route path="/users/:id" element={<UserDetails />} />
-            {/* Add more admin routes as needed */}
-          </Route>
-        </Route>
-      </Routes>
-    </Router>
+    <Routes>
+      <Route path="/" element={<AuthContext />} />
+      <Route element={<ProtectedRoutes />}>
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/admin/data" element={<DataPage />} />
+        <Route path="/admin/data/:type" element={<DataPage />} />
+        <Route path="/admin/export" element={<ExportPage />} />
+        <Route path="/admin/reports" element={<ReportsPage />} />
+        <Route path="/admin/tools" element={<ToolsPage />} />
+      </Route>
+    </Routes>
   )
 }
 

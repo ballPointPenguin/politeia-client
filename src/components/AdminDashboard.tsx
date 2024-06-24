@@ -1,36 +1,41 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 
 const AdminDashboard: React.FC = () => {
+  const location = useLocation()
+  const isAdminHome = location.pathname === '/admin'
+
   return (
     <AdminContainer>
-      <h2>Admin Dashboard</h2>
+      {isAdminHome && <h2>AdminDashboard</h2>}
       <Nav>
         <NavItem>
-          <StyledLink to="/export">Export</StyledLink>
+          <StyledLink to="/admin/export">Export</StyledLink>
         </NavItem>
         <NavItem>
-          <StyledLink to="/reports">Reports</StyledLink>
+          <StyledLink to="/admin/reports">Reports</StyledLink>
         </NavItem>
         <NavItem>
-          <StyledLink to="/tools">Tools</StyledLink>
+          <StyledLink to="/admin/tools">Tools</StyledLink>
         </NavItem>
         <NavItem>
-          <StyledLink to="/data">Data Explore</StyledLink>
+          <StyledLink to="/admin/data">Data Explore</StyledLink>
         </NavItem>
-        {/* Add more links as needed */}
       </Nav>
     </AdminContainer>
   )
 }
 
 const AdminContainer = styled.div`
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  background: var(--color-bg-medium);
+  color: var(--color-text-light);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `
 
 const Nav = styled.nav`

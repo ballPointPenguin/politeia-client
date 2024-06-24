@@ -13,10 +13,8 @@ const Layout: React.FC = () => {
 const Main = styled.main`
   display: flex;
   flex-direction: column;
-  min-height: 60vh;
+  height: 50%;
   width: 100%;
-  background-color: var(--color-bg-dark);
-  color: var(--color-text-light);
 `
 
 export default Layout

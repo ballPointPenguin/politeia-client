@@ -24,14 +24,15 @@ const LogoutButton: React.FC = () => {
     }
   }
 
-  return <StyledButton onClick={handleLogout}>Logout</StyledButton>
+  return <StyledButton onClick={handleLogout}>Exit</StyledButton>
 }
 
 const StyledButton = styled.button`
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
-  color: var(--color-text-light);
+  line-height: 1.5;
+  color: var(--color-text-dark);
   background-color: var(--color-accent);
   border: none;
   border-radius: 5px;

@@ -36,7 +36,7 @@ const AuthContainer = styled.div`
   justify-content: center;
   padding: 20px;
   background: var(--color-bg-medium);
-  color: black;
+  color: var(--color-text-light);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `
@@ -57,8 +57,8 @@ const StyledLink = styled(Link)`
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
-  color: var(--color-text-light);
-  background-color: var(--color-primary);
+  color: var(--color-text-dark);
+  background-color: var(--color-secondary);
   border: none;
   border-radius: 5px;
   text-decoration: none;
@@ -66,7 +66,7 @@ const StyledLink = styled(Link)`
   cursor: pointer;
 
   &:hover {
-    background-color: var(--color-primary-hover);
+    background-color: var(--color-secondary-hover);
     color: var(--color-text-light);
   }
 `
