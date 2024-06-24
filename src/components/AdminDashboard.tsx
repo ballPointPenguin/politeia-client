@@ -40,6 +40,7 @@ const AdminContainer = styled.div`
 
 const Nav = styled.nav`
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
   list-style: none;

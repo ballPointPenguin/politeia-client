@@ -61,6 +61,10 @@ body {
   animation: gradient 30s ease-out 2s infinite backwards;
 }
 
+#root {
+  max-width: 94vw;
+}
+
 @keyframes gradient {
   0% {
     background-position: 0% 50%;
