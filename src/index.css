@@ -2,15 +2,23 @@
   --font-primary: 'Roboto', sans-serif;
   --color-text-light: rgba(255, 255, 255, 0.87);
   --color-text-dark: #213547;
-  --color-bg-dark: #242424;
+  --color-bg-dark: #1b1b3a;
+  --color-bg-medium: #2c2c54;
   --color-bg-light: #ffffff;
-  --color-primary: #646cff;
-  --color-primary-hover: #535bf2;
-  --color-secondary: #61dafb;
+  --color-primary: #8e44ad;
+  --color-primary-hover: #732d91;
+  --color-secondary: #3498db;
+  --color-secondary-hover: #2980b9;
+  --color-accent: #1abc9c;
+  --color-accent-hover: #16a085;
+  --color-highlight: #f5d300;
+  --color-warning: #f39c12;
+  --color-error: #e74c3c;
+  --color-success: #2ecc71;
   --color-button-bg: #1a1a1a;
   --color-button-bg-light: #f9f9f9;
-  --color-link: #646cff;
-  --color-link-hover: #535bf2;
+  --color-link: #8e44ad;
+  --color-link-hover: #732d91;
 
   font-family: var(--font-primary);
   line-height: 1.5;
@@ -35,7 +43,7 @@ body {
   background: linear-gradient(
     135deg,
     #000000,
-    #2c2c54,
+    #1b1b3a,
     #8e44ad,
     #3498db,
     #1abc9c,
@@ -58,6 +66,12 @@ h1 {
   font-size: 3em;
   line-height: 1.1;
   color: var(--color-primary);
+}
+
+h2 {
+  font-size: 2em;
+  line-height: 1.1;
+  color: var(--color-secondary);
 }
 
 button {
