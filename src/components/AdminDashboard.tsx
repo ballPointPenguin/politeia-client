@@ -1,44 +1,28 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useAuth } from '../hooks/useAuth'
-import GoogleLoginButton from './GoogleLoginButton'
-import LogoutButton from './LogoutButton'
 import styled from 'styled-components'
 
-const AuthContext: React.FC = () => {
-  const { user } = useAuth()
-
+const AdminDashboard: React.FC = () => {
   return (
-    <AuthContainer>
-      {user ? (
-        <>
-          <h2>Welcome, {user.name}!</h2>
-          <Nav>
-            <NavItem>
-              <StyledLink to="/admin">Admin Dashboard</StyledLink>
-            </NavItem>
-            <NavItem>
-              <LogoutButton />
-            </NavItem>
-          </Nav>
-        </>
-      ) : (
-        <GoogleLoginButton />
-      )}
-    </AuthContainer>
+    <AdminContainer>
+      <h2>Admin Dashboard</h2>
+      <Nav>
+        <NavItem>
+          <StyledLink to="/users">Users List</StyledLink>
+        </NavItem>
+        {/* Add more links as needed */}
+      </Nav>
+    </AdminContainer>
   )
 }
 
-const AuthContainer = styled.div`
+const AdminContainer = styled.div`
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background: var(--color-bg-medium);
-  color: black;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `
 
 const Nav = styled.nav`
@@ -71,4 +55,4 @@ const StyledLink = styled(Link)`
   }
 `
 
-export default AuthContext
+export default AdminDashboard

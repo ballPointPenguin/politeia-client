@@ -1,7 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import AdminHome from '../components/AdminHome'
+import AdminDashboard from '../components/AdminDashboard'
 import AuthContext from '../components/AuthContext'
+import Layout from '../components/Layout'
 import ProtectedRoutes from '../components/ProtectedRoutes'
 import UserDetails from '../components/UserDetails'
 import UsersList from '../components/UsersList'
@@ -12,12 +13,13 @@ const AppRoutes: React.FC = () => {
       <Routes>
         <Route path="/" element={<AuthContext />} />
         <Route element={<ProtectedRoutes />}>
-          <Route path="/admin" element={<AdminHome />} />
-          <Route path="/users" element={<UsersList />} />
-          <Route path="/users/:id" element={<UserDetails />} />
-          {/* Add more protected routes here */}
+          <Route element={<Layout />}>
+            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/users" element={<UsersList />} />
+            <Route path="/users/:id" element={<UserDetails />} />
+            {/* Add more admin routes as needed */}
+          </Route>
         </Route>
-        {/* Add public routes here if needed */}
       </Routes>
     </Router>
   )

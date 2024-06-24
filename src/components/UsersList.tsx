@@ -22,7 +22,7 @@ const UsersList: React.FC = () => {
 
   return (
     <div>
-      <h1>Users List</h1>
+      <h3>Users List</h3>
       <ul>
         {users.map((user) => (
           <li key={user.uid}>

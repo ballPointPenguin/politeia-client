@@ -25,7 +25,7 @@ const UserDetails: React.FC = () => {
 
   return (
     <div>
-      <h1>User Details</h1>
+      <h3>User Details</h3>
       <p>Name: {user.username}</p>
       <p>Email: {user.email}</p>
       {/* other user details */}
