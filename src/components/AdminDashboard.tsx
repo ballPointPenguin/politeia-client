@@ -8,7 +8,16 @@ const AdminDashboard: React.FC = () => {
       <h2>Admin Dashboard</h2>
       <Nav>
         <NavItem>
-          <StyledLink to="/users">Users List</StyledLink>
+          <StyledLink to="/export">Export</StyledLink>
+        </NavItem>
+        <NavItem>
+          <StyledLink to="/reports">Reports</StyledLink>
+        </NavItem>
+        <NavItem>
+          <StyledLink to="/tools">Tools</StyledLink>
+        </NavItem>
+        <NavItem>
+          <StyledLink to="/data">Data Explore</StyledLink>
         </NavItem>
         {/* Add more links as needed */}
       </Nav>
