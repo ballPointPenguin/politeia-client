@@ -2,11 +2,19 @@ import type { User } from '../types'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
+const API_URL = import.meta.env.VITE_API_URL
+
 const UsersList: React.FC = () => {
   const [users, setUsers] = useState<User[]>([])
 
   useEffect(() => {
-    fetch('/api/users')
+    fetch(`${API_URL}/users`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include'
+    })
       .then((response) => response.json())
       .then((data) => setUsers(data))
       .catch((error) => console.error('Error fetching users:', error))
