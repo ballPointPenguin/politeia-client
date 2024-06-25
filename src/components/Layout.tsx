@@ -13,8 +13,8 @@ const Layout: React.FC = () => {
 const Main = styled.main`
   display: flex;
   flex-direction: column;
-  height: 50%;
-  width: 100%;
+  min-height: 50%;
+  align-items: center;
 `
 
 export default Layout

@@ -14,8 +14,7 @@ const AppRoutes: React.FC = () => {
       <Route path="/" element={<AuthContext />} />
       <Route element={<ProtectedRoutes />}>
         <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/admin/data" element={<DataPage />} />
-        <Route path="/admin/data/:type" element={<DataPage />} />
+        <Route path="/admin/data/*" element={<DataPage />} />
         <Route path="/admin/export" element={<ExportPage />} />
         <Route path="/admin/reports" element={<ReportsPage />} />
         <Route path="/admin/tools" element={<ToolsPage />} />
