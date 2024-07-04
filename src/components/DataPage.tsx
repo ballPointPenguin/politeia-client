@@ -1,5 +1,6 @@
 import React from 'react'
 import { useParams, Link, Route, Routes } from 'react-router-dom'
+import ParticipantTable from './ParticipantTable'
 import UserTable from './UserTable'
 import styled from 'styled-components'
 
@@ -32,8 +33,8 @@ const DataPage: React.FC = () => {
       <Routes>
         <Route path="/" element={<div>Select a data type</div>} />
         <Route path="conversations" element={<div>Conversations data</div>} />
+        <Route path="participants" element={<ParticipantTable />} />
         <Route path="users" element={<UserTable />} />
-        <Route path="participants" element={<div>Participants data</div>} />
         <Route path="*" element={<div>Page Not Found</div>} />
       </Routes>
     </DataContainer>

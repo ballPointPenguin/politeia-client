@@ -8,6 +8,7 @@ const UserTable: React.FC = () => {
   const [users, setUsers] = useState<User[]>([])
   const [page, setPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const params = new URLSearchParams({
@@ -19,6 +20,7 @@ const UserTable: React.FC = () => {
       const data = await response.json()
       setUsers(data.data)
       setTotalPages(data.totalPages)
+      setLoading(false)
     }
     fetchUsers()
   }, [page])
@@ -31,6 +33,10 @@ const UserTable: React.FC = () => {
     if (page > 1) setPage(page - 1)
   }
 
+  if (loading) {
+    return <div>Loading...</div> // TODO - replace this with a spinner component
+  }
+
   return (
     <div>
       <Table>
@@ -40,8 +46,11 @@ const UserTable: React.FC = () => {
             <th>hname</th>
             <th>username</th>
             <th>email</th>
-            <th>site_id</th>
             <th>is_owner</th>
+            <th>zinvite</th>
+            <th>oinvite</th>
+            <th>tut</th>
+            <th>site_id</th>
             <th>site_owner</th>
             <th>created</th>
           </tr>
@@ -53,8 +62,11 @@ const UserTable: React.FC = () => {
               <td>{user.hname}</td>
               <td>{user.username}</td>
               <td>{user.email}</td>
-              <td>{user.siteId}</td>
               <td>{user.isOwner ? 'Yes' : 'No'}</td>
+              <td>{user.zinvite}</td>
+              <td>{user.oinvite}</td>
+              <td>{user.tut}</td>
+              <td>{user.siteId}</td>
               <td>{user.siteOwner ? 'Yes' : 'No'}</td>
               <td>{new Date(Number(user.created)).toLocaleDateString()}</td>
             </tr>
@@ -101,6 +113,11 @@ const Pagination = styled.div`
     border: none;
     border-radius: 4px;
     cursor: pointer;
+
+    &:disabled {
+      background-color: var(--color-disabled);
+      cursor: not-allowed;
+    }
   }
 `
 

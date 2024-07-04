@@ -19,6 +19,7 @@
   --color-button-bg-light: #f9f9f9;
   --color-link: #3498db;
   --color-link-hover: #2980b9;
+  --color-disabled: #b3c6d8;
 
   font-family: var(--font-primary);
   line-height: 1.5;
